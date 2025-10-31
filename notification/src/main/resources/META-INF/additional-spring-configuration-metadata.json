@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "entity.service.url",
+    "type": "java.lang.String",
+    "description": "A description for 'entity.service.url'"
+  },
+  {
+    "name": "app.services.perfil.url",
+    "type": "java.lang.String",
+    "description": "A description for 'app.services.perfil.url'"
+  },
+  {
+    "name": "broker.queue.email.name",
+    "type": "java.lang.String",
+    "description": "A description for 'broker.queue.email.name'"
+  }
+]}
