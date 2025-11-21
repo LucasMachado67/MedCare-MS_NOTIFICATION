@@ -13,6 +13,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+/**
+ * Entidade responsável por representar um registro de envio de e-mail no sistema
+ * de notificações. Cada instância desta classe armazena os dados de origem,
+ * destino, conteúdo, data de envio e status final do envio.
+ *
+ * A classe é mapeada para a tabela "email" e utilizada tanto para auditoria
+ * quanto para controle de falhas e reprocessamentos.
+ */
 @Entity
 @Table(name = "email")
 public class Email {
@@ -20,17 +28,39 @@ public class Email {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long emailId;
+    /**
+     * ID do usuário relacionado ao envio do e-mail.
+     * Pode ser utilizado para rastreamento e auditoria.
+     */
     private long userId;
+
+    /** Endereço de e-mail do remetente. */
     private String emailFrom;
+
+    /** Endereço de e-mail do destinatário. */
     private String emailTo;
+
+    /** Assunto do e-mail. */
     private String subject;
+
+    /**
+     * Corpo do e-mail. O uso de TEXT permite armazenar conteúdos grandes.
+     */
     @Column(columnDefinition = "TEXT")
     private String text;
+
+    /** Data e hora em que a tentativa de envio foi realizada. */
     private LocalDateTime sendDateEmail;
+
+    /**
+     * Status da tentativa de envio do e-mail.
+     * Utiliza o enum StatusEmail para indicar se o envio foi realizado com sucesso
+     * ou se ocorreu erro.
+     */
     @Enumerated(EnumType.STRING)
     private StatusEmail statusEmail;
 
-    
+    // Getters e Setters
     public long getEmailId() {
         return emailId;
     }
